@@ -1,0 +1,168 @@
+﻿<Window x:Class="PMSystemWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PMSystemWPF"
+        mc:Ignorable="d"
+        Title="Project Management System" Height="650" Width="800"
+        Closed="Window_Closed">
+    <Grid>
+        <TabControl>
+            <!--Users-->
+            <TabItem Header="Users">
+                <StackPanel>
+                    <DataGrid x:Name="dg_Users" ItemsSource="{Binding}"
+                              AutoGenerateColumns="False"
+                              SelectionChanged="dg_Users_SelectionChanged"
+                              MouseDoubleClick="dg_Users_MouseDoubleClick"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Mail" Binding="{Binding email}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding status}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DockPanel LastChildFill="False">
+                        <Button Content="Edit" x:Name="btn_editUser"
+                                Click="btn_editUser_Click"/>
+                        <Button Content="Add" x:Name="btn_addUser" Background="Aqua"
+                                Click="btn_addUser_Click"/>
+                        <Button Content="Delete" x:Name="btn_deleteUser" Background="red"
+                                Click="btn_deleteUser_Click"/>
+                    </DockPanel>
+                    <TextBlock>Contacts:</TextBlock>
+                    <DataGrid x:Name="dg_UserContacts" 
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Type" Binding="{Binding contact_type.contact_type}"/>
+                            <DataGridTextColumn Header="Value" Binding="{Binding value}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock>Roles:</TextBlock>
+                    <DataGrid x:Name="dg_UserRoles" ItemsSource="{Binding}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock>Technologies:</TextBlock>
+                    <DataGrid x:Name="dg_UserTechnologies" ItemsSource="{Binding}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <!--Projects-->
+            <TabItem Header="Projects">
+                <StackPanel>
+                    <DataGrid x:Name="dg_Projects" ItemsSource="{Binding}"
+                              AutoGenerateColumns="False"
+                              SelectionChanged="dg_Projects_SelectionChanged"
+                              MouseDoubleClick="dg_Projects_MouseDoubleClick"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
+                            <DataGridTextColumn Header="Client" Binding="{Binding client.name}"/>
+                            <DataGridTextColumn Header="Project manager" Binding="{Binding project_manager.name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DockPanel LastChildFill="False">
+                        <Button Content="Edit" x:Name="btn_editProject"
+                                Click="btn_editProject_Click"/>
+                        <Button Content="Add" x:Name="btn_addProject" Background="Aqua"
+                                Click="btn_addProject_Click"/>
+                        <Button Content="Delete" x:Name="btn_deleteProject" Background="red"
+                                Click="btn_deleteProject_Click"/>
+                    </DockPanel>
+                    <TextBlock>Tasks:</TextBlock>
+                    <DataGrid x:Name="dg_ProjectTasks" 
+                              MouseDoubleClick="dg_ProjectTasks_MouseDoubleClick"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
+                            <DataGridTextColumn Header="Start" Binding="{Binding start}"/>
+                            <DataGridTextColumn Header="End" Binding="{Binding end}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding status}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock>Technologies:</TextBlock>
+                    <DataGrid x:Name="dg_ProjectTechnologies" ItemsSource="{Binding}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding technologies.name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding technologies.description}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <!--Tasks-->
+            <!--Projects-->
+            <TabItem Header="Tasks">
+                <StackPanel>
+                    <DataGrid x:Name="dg_Tasks" ItemsSource="{Binding}"
+                              AutoGenerateColumns="False"
+                              SelectionChanged="dg_Tasks_SelectionChanged"
+                              MouseDoubleClick="dg_Tasks_MouseDoubleClick"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
+                            <DataGridTextColumn Header="Project" Binding="{Binding project.name}"/>
+                            <DataGridTextColumn Header="Start" Binding="{Binding start}"/>
+                            <DataGridTextColumn Header="End" Binding="{Binding end}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding status}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DockPanel LastChildFill="False">
+                        <Button Content="Edit" x:Name="btn_editTask"
+                                Click="btn_editTask_Click"/>
+                        <Button Content="Add" x:Name="btn_addTask" Background="Aqua"
+                                Click="btn_addTask_Click"/>
+                        <Button Content="Delete" x:Name="btn_deleteTask" Background="red"
+                                Click="btn_deleteTask_Click"/>
+                    </DockPanel>
+                    <TextBlock>Developers:</TextBlock>
+                    <DataGrid x:Name="dg_TaskDevs" 
+                              MouseDoubleClick="dg_TaskDevs_MouseDoubleClick"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding users.name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock>Technologies:</TextBlock>
+                    <DataGrid x:Name="dg_TaskTechnologies" ItemsSource="{Binding}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding technology.name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding technology.description}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock>Comments:</TextBlock>
+                    <DataGrid x:Name="dg_TaskComments" ItemsSource="{Binding}"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding created_at}"/>
+                            <DataGridTextColumn Header="Author" Binding="{Binding author.name}"/>
+                            <DataGridTextColumn Header="Comment" Binding="{Binding comment}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

@@ -1,0 +1,2 @@
+Plugin https://dev.mysql.com/downloads/windows/visualstudio/
+Problem with related entities saving https://stackoverflow.com/questions/22138579/ef6mysql-error-inserting-2-related-objects-in-a-single-savechanges
