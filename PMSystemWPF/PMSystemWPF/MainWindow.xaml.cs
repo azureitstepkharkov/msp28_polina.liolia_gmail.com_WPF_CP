@@ -26,12 +26,14 @@ namespace PMSystemWPF
     /// </summary>
     public partial class MainWindow : Window, IDisposable
     {
+        private User currentUser;
         private MySqlDbContext db;
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
             db = new MySqlDbContext();
             LoadDataFromDb();
+            this.currentUser = user;
         }
 
         private void LoadDataFromDb()

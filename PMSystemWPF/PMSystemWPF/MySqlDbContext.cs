@@ -71,7 +71,9 @@ namespace PMSystemWPF
             modelBuilder.Entity<Permission>()
                 .HasMany(e => e.roles)
                 .WithMany(e => e.permissions)
-                .Map(m => m.ToTable("permission_role", "sql7235987").MapLeftKey("permission_id").MapRightKey("role_id"));
+                .Map(m => m.ToTable("permission_role", "sql7235987")
+                .MapLeftKey("permission_id")
+                .MapRightKey("role_id"));
 
             modelBuilder.Entity<Project>()
                 .Property(e => e.name)
@@ -112,7 +114,9 @@ namespace PMSystemWPF
             modelBuilder.Entity<Role>()
                 .HasMany(e => e.users)
                 .WithMany(e => e.roles)
-                .Map(m => m.ToTable("role_user", "sql7235987").MapLeftKey("role_id").MapRightKey("user_id"));
+                .Map(m => m.ToTable("role_user", "sql7235987")
+                .MapLeftKey("role_id")
+                .MapRightKey("user_id"));
 
             modelBuilder.Entity<MyTask>()
                 .Property(e => e.name)
@@ -167,7 +171,9 @@ namespace PMSystemWPF
             modelBuilder.Entity<Technology>()
                 .HasMany(e => e.users)
                 .WithMany(e => e.technologies)
-                .Map(m => m.ToTable("technology_user", "sql7235987").MapLeftKey("technology_id").MapRightKey("user_id"));
+                .Map(m => m.ToTable("technology_user", "sql7235987")
+                .MapLeftKey("technology_id")
+                .MapRightKey("user_id"));
 
             modelBuilder.Entity<User>()
                 .Property(e => e.name)

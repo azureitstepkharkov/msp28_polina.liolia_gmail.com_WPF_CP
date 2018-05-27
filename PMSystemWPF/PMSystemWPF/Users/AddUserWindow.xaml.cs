@@ -1,4 +1,5 @@
 ﻿using Models.PMSystemWPF;
+using PMSystemWPF.Login;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -97,6 +98,7 @@ namespace PMSystemWPF.Users
             
             //adding row to db context
             db.Users.Add(user);
+            db.SaveChanges();
             this.Close();
         }
 

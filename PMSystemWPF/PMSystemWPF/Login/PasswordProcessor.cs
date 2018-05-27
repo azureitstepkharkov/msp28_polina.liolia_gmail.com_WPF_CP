@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DevOne.Security.Cryptography.BCrypt;
 
-namespace PMSystemWPF
+namespace PMSystemWPF.Login
 {
     public class PasswordProcessor
     {
