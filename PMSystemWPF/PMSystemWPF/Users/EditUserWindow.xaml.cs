@@ -26,6 +26,7 @@ namespace PMSystemWPF.Users
         private EditUserWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public EditUserWindow(User user, MySqlDbContext db)
@@ -73,7 +74,6 @@ namespace PMSystemWPF.Users
             user.status = status;
 
             var roles = lbRoles.SelectedItems;
-           // var roleEntries = db.ChangeTracker.Entries<Role>();
             user.roles.Clear();
             foreach (Role role in roles)
             {
@@ -84,7 +84,7 @@ namespace PMSystemWPF.Users
             user.technologies.Clear();
             foreach (Technology tech in technologies)
             {
-                tech.users.Add(user);
+                user.technologies.Add(tech);
             }
             this.Close();
         }

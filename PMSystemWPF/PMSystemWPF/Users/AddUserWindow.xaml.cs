@@ -28,6 +28,7 @@ namespace PMSystemWPF.Users
         private AddUserWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public AddUserWindow(MySqlDbContext db)
@@ -95,10 +96,16 @@ namespace PMSystemWPF.Users
             {
                 tech.users.Add(user);
             }
-            
-            //adding row to db context
-            db.Users.Add(user);
-            db.SaveChanges();
+            try
+            {
+                //adding row to db context
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             this.Close();
         }
 

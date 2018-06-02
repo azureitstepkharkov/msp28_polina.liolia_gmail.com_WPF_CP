@@ -24,6 +24,7 @@ namespace PMSystemWPF.Projects
         public AddProjectWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public AddProjectWindow(MySqlDbContext db)

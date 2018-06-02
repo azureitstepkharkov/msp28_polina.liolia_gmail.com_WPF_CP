@@ -31,6 +31,7 @@ namespace PMSystemWPF
         public MainWindow(User user)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             db = new MySqlDbContext();
             LoadDataFromDb();
             this.currentUser = user;
@@ -81,11 +82,16 @@ namespace PMSystemWPF
         private void dg_Users_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ShowEditUserWindow(dg_Users);
+            
         }
 
         private void btn_editUser_Click(object sender, RoutedEventArgs e)
         {
             ShowEditUserWindow(dg_Users);
+            dg_UserContacts.Items.Refresh();
+            dg_UserRoles.Items.Refresh();
+            dg_UserTechnologies.Items.Refresh();
+            dg_Users.Items.Refresh();
         }
 
         private void ShowEditUserWindow(DataGrid dg)
@@ -99,7 +105,19 @@ namespace PMSystemWPF
                     {
                         EditUserWindow editUserWindow = new EditUserWindow(currentUser, db);
                         editUserWindow.ShowDialog();
-                        db.SaveChanges();
+                        try
+                        {
+                            db.SaveChanges();
+                            dg_UserContacts.Items.Refresh();
+                            dg_UserRoles.Items.Refresh();
+                            dg_UserTechnologies.Items.Refresh();
+                            dg_Users.Items.Refresh();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        
                     }
                 }
             }

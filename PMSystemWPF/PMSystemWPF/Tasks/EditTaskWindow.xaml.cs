@@ -25,6 +25,7 @@ namespace PMSystemWPF.Tasks
         public EditTaskWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public EditTaskWindow(MyTask task, MySqlDbContext db)

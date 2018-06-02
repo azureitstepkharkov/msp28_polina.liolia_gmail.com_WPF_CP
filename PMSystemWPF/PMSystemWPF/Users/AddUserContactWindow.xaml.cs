@@ -28,6 +28,7 @@ namespace PMSystemWPF.Users
         private AddUserContactWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public AddUserContactWindow(MySqlDbContext db)

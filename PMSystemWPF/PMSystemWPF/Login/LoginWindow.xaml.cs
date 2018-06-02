@@ -24,6 +24,7 @@ namespace PMSystemWPF.Login
         public LoginWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
